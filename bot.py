@@ -160,6 +160,7 @@ async def bb_command(ctx, *, query: str = None):
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
             }],
+            'cookiefile': 'cookies.txt', # 👈 INI YANG DITAMBAHKAN BIAR GAK MINTA LOGIN
             'quiet': True,
             'noplaylist': True
         }
