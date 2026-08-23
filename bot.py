@@ -136,6 +136,10 @@ async def bb_command(ctx, *, query: str = None):
         await ctx.send("ℹ️ **Cara Penggunaan:**\n- `!bb [youtube link]` - Untuk convert link YouTube.\n- `!bb search [judul lagu/artist]` - Untuk mencari dan convert lagu.")
         return
 
+    if query.strip().lower() == 'help':
+        await ctx.invoke(bot.get_command('help'))
+        return
+
     # Check Rate Limit (Channel-based)
     allowed, remaining = check_cooldown(ctx.channel.id)
     if not allowed:
@@ -153,7 +157,8 @@ async def bb_command(ctx, *, query: str = None):
     
     def download_audio():
         opts = {
-            'format': 'bestaudio/best',
+            'format': 'ba/b',
+            'cookiefile': 'cookies.txt',
             'outtmpl': 'downloads/%(id)s.%(ext)s',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
