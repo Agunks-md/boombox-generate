@@ -157,8 +157,7 @@ async def bb_command(ctx, *, query: str = None):
     
     def download_audio():
         opts = {
-            'format': 'ba/b',
-            'cookiefile': 'cookies.txt',
+            'format': 'bestaudio/best/ba/b',
             'outtmpl': 'downloads/%(id)s.%(ext)s',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
@@ -189,7 +188,8 @@ async def bb_command(ctx, *, query: str = None):
     try:
         title, file_path = await loop.run_in_executor(None, download_audio)
     except Exception as e:
-        await status_msg.edit(content=f"❌ **Gagal mengunduh audio:**\n```\n{str(e)}\n```")
+        print(f"Error detail: {e}")
+        await status_msg.edit(content="❌ **Gagal mengunduh audio.**")
         return
         
     await status_msg.edit(content=f"⬆️ Berhasil mengunduh **{title}**. Mengunggah ke Top4Top...")
@@ -198,7 +198,8 @@ async def bb_command(ctx, *, query: str = None):
         direct_link = await upload_to_top4top(file_path)
         await status_msg.edit(content=f"✅ **Selesai!**\n🎵 Judul: **{title}**\n🔗 Direct Link MP3: {direct_link}\n\n*Link ini bisa langsung kamu gunakan di in-game boombox.*")
     except Exception as e:
-        await status_msg.edit(content=f"❌ **Gagal mengunggah ke Top4Top:**\n```\n{str(e)}\n```")
+        print(f"Error detail: {e}")
+        await status_msg.edit(content="❌ **Gagal mengunggah lagu ke server.**")
     finally:
         # Storage Cleanup - Immediately remove local file
         if os.path.exists(file_path):
