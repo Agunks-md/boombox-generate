@@ -1,6 +1,0 @@
-discord.py==2.3.2
-yt-dlp
-aiohttp==3.9.5
-beautifulsoup4==4.12.3
-python-dotenv==1.0.1
-audioop-lts
