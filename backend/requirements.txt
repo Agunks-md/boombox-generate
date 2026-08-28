@@ -1,0 +1,20 @@
+# ── FastAPI stack ────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.1
+pydantic>=2.7.4
+
+# ── HTTP client ──────────────────────────────────
+requests>=2.32.3
+
+# ── Audio downloader ─────────────────────────────
+yt-dlp>=2024.7.1
+
+# ── FFmpeg (auto-managed, no PATH setup required) ─
+imageio-ffmpeg
+
+# ── HTML parser (Top4Top response + Spotify OG) ──
+beautifulsoup4>=4.12.3
+lxml>=5.2.2
+
+# ── Optional: Spotify API (not used by default) ──
+# spotipy>=2.23.0
